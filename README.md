@@ -1,4 +1,8 @@
 # php-ext-thisrc
+[![Actions](https://github.com/SOF3/serde-iter/workflows/CI/badge.svg)](https://github.com/SOF3/serde-iter/actions?query=workflow%3ACI)
+![GitHub](https://img.shields.io/github/last-commit/SOF3/serde-iter)
+![GitHub](https://img.shields.io/github/stars/SOF3/serde-iter?style=social)
+
 PHP extension to get refcount of `$this`.
 
 This extension only adds one new function `thisrc() : int`.
