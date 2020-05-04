@@ -1,0 +1,7 @@
+ARG_ENABLE('thisrc', 'thisrc support', 'no');
+
+if (PHP_THISRC != 'no') {
+	AC_DEFINE('HAVE_THISRC', 1, 'thisrc support enabled');
+
+	EXTENSION('thisrc', 'thisrc.c', null, '/DZEND_ENABLE_STATIC_TSRMLS_CACHE=1');
+}
