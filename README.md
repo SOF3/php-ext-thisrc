@@ -47,7 +47,7 @@ public function plus(int $value) : Foo {
 		$this->inner += $value;
 		return $this;
 	} else {
-		return new Foo($this->inner + $value;)
+		return new Foo($this->inner + $value);
 	}
 }
 ```
