@@ -3,7 +3,7 @@ thisrc() should throw error when there is no class context
 --SKIPIF--
 <?php
 if (!extension_loaded('thisrc')) {
-	echo 'skip';
+    echo 'skip';
 }
 ?>
 --FILE--

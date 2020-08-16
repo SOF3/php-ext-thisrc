@@ -1,0 +1,9 @@
+root = true
+
+[*.c]
+indent_style = tab
+indent_size = 4
+
+[*.phpt]
+indent_style = space
+indent_size = 4

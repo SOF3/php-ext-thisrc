@@ -6,7 +6,7 @@
 extern zend_module_entry thisrc_module_entry;
 # define phpext_thisrc_ptr &thisrc_module_entry
 
-# define PHP_THISRC_VERSION "0.1.0"
+# define PHP_THISRC_VERSION "0.1.1"
 
 # if defined(ZTS) && defined(COMPILE_DL_THISRC)
 ZEND_TSRMLS_CACHE_EXTERN()

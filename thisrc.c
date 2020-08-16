@@ -32,6 +32,38 @@ PHP_FUNCTION(thisrc)
 }
 /* }}} */
 
+/* {{{ void thisrc()
+ */
+PHP_FUNCTION(thisuniq)
+{
+	ZEND_PARSE_PARAMETERS_NONE();
+
+	zend_object *object = zend_get_this_object(EG(current_execute_data));
+
+	if(!object) {
+		zend_throw_error(NULL, "thisuniq() must be called from within a class");
+		return;
+	}
+
+	if(object->gc.refcount <= 1) {
+		ZVAL_OBJ(return_value, object);
+	} else {
+		zend_object *clone = zend_objects_new(object->ce);
+		if(clone->ce->default_properties_count) {
+			zval *p = clone->properties_table;
+			zval *end = p + clone->ce->default_properties_count;
+			do {
+				ZVAL_UNDEF(p);
+				p++;
+			} while(p != end);
+		}
+
+		zend_objects_clone_members(clone, object);
+
+		ZVAL_OBJ(return_value, clone);
+	}
+}
+/* }}} */
 
 /* {{{ PHP_RINIT_FUNCTION
  */
@@ -59,12 +91,15 @@ PHP_MINFO_FUNCTION(thisrc)
  */
 ZEND_BEGIN_ARG_INFO(arginfo_thisrc, 0)
 ZEND_END_ARG_INFO()
+ZEND_BEGIN_ARG_INFO(arginfo_thisuniq, 0)
+ZEND_END_ARG_INFO()
 /* }}} */
 
 /* {{{ thisrc_functions[]
  */
 static const zend_function_entry thisrc_functions[] = {
 	PHP_FE(thisrc,		arginfo_thisrc)
+	PHP_FE(thisuniq,	arginfo_thisuniq)
 	PHP_FE_END
 };
 /* }}} */

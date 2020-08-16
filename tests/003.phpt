@@ -3,7 +3,7 @@ thisrc() should return refcount correctly
 --SKIPIF--
 <?php
 if (!extension_loaded('thisrc')) {
-	echo 'skip';
+    echo 'skip';
 }
 ?>
 --FILE--
